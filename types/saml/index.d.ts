@@ -1,12 +1,7 @@
-// Type definitions for saml 1.0
-// Project: https://github.com/auth0/node-saml#readme
-// Definitions by: Eric Heikes <https://github.com/eheikes>, Eva Sarafianou <https://github.com/esarafianou>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-
 /// <reference types="node" />
 
 export interface SamlAttributes {
-    [key: string]: string;
+    [key: string]: string | ReadonlyArray<string>;
 }
 
 export interface KeyInfoProvider {
@@ -74,7 +69,10 @@ export interface SamlUnassignedOpts {
 }
 export namespace Saml11 {
     function create(opts: SamlSignedOpts, cb?: (err: Error | null, result: any[], proofSecret: Buffer) => void): any;
-    function createUnsignedAssertion(opts: SamlUnassignedOpts, cb?: (err: Error | null, result: any[], proofSecret: Buffer) => void): any;
+    function createUnsignedAssertion(
+        opts: SamlUnassignedOpts,
+        cb?: (err: Error | null, result: any[], proofSecret: Buffer) => void,
+    ): any;
 }
 
 export namespace Saml20 {
